@@ -30,12 +30,21 @@ const PAYOUTS = {
 let credits = 100;
 let bet = 10;
 let isSpinning = false;
+let canHold = false;
+let holdUsed = false;
+let currentResults = [null, null, null];
+let heldReels = [false, false, false];
 
 // DOM elements
 const reels = [
     document.getElementById('reel1'),
     document.getElementById('reel2'),
     document.getElementById('reel3')
+];
+const holdButtons = [
+    document.getElementById('hold1'),
+    document.getElementById('hold2'),
+    document.getElementById('hold3')
 ];
 const creditsDisplay = document.getElementById('credits');
 const betDisplay = document.getElementById('bet-amount');
@@ -78,12 +87,30 @@ function updateDisplay() {
     creditsDisplay.textContent = credits;
     betDisplay.textContent = bet;
 
-    // Disable spin if not enough credits
-    spinButton.disabled = credits < bet || isSpinning;
+    // Disable spin if not enough credits (but allow free re-spin with holds)
+    const needsCredits = !canHold || holdUsed;
+    spinButton.disabled = (needsCredits && credits < bet) || isSpinning;
 
-    // Disable bet buttons during spin
-    betUpButton.disabled = isSpinning;
-    betDownButton.disabled = isSpinning;
+    // Update spin button text
+    if (canHold && !holdUsed && heldReels.some(h => h)) {
+        spinButton.querySelector('span').textContent = 'RESPIN';
+    } else {
+        spinButton.querySelector('span').textContent = 'SPIN';
+    }
+
+    // Disable bet buttons during spin or when holds are active
+    betUpButton.disabled = isSpinning || canHold;
+    betDownButton.disabled = isSpinning || canHold;
+
+    // Update hold buttons
+    holdButtons.forEach((btn, i) => {
+        btn.disabled = !canHold || isSpinning;
+        if (heldReels[i]) {
+            btn.classList.add('active');
+        } else {
+            btn.classList.remove('active');
+        }
+    });
 }
 
 // Show message
@@ -202,32 +229,70 @@ function celebrate() {
     }, 4000);
 }
 
+// Toggle hold for a reel
+function toggleHold(index) {
+    if (!canHold || isSpinning) return;
+    heldReels[index] = !heldReels[index];
+    updateDisplay();
+}
+
+// Reset hold state
+function resetHolds() {
+    canHold = false;
+    holdUsed = false;
+    heldReels = [false, false, false];
+    updateDisplay();
+}
+
 // Main spin function
 async function spin() {
-    if (isSpinning || credits < bet) return;
+    if (isSpinning) return;
+
+    // Check if this is a free re-spin with holds
+    const isRespin = canHold && !holdUsed && heldReels.some(h => h);
+
+    if (!isRespin) {
+        // Regular spin - need credits
+        if (credits < bet) return;
+
+        // Reset holds for new spin
+        resetHolds();
+
+        // Deduct bet
+        credits -= bet;
+    } else {
+        // Mark hold as used for this round
+        holdUsed = true;
+        canHold = false;
+    }
 
     isSpinning = true;
     spinButton.classList.add('spinning');
     showWinLine(false);
     showMessage('');
-
-    // Deduct bet
-    credits -= bet;
     updateDisplay();
 
-    // Generate final results
+    // Generate final results (keep held reels)
     const results = [
-        getRandomSymbol(),
-        getRandomSymbol(),
-        getRandomSymbol()
+        heldReels[0] ? currentResults[0] : getRandomSymbol(),
+        heldReels[1] ? currentResults[1] : getRandomSymbol(),
+        heldReels[2] ? currentResults[2] : getRandomSymbol()
     ];
 
-    // Spin all reels with staggered timing
-    await Promise.all([
-        spinReel(reels[0], results[0], 1000, 0),
-        spinReel(reels[1], results[1], 1200, 200),
-        spinReel(reels[2], results[2], 1400, 400)
-    ]);
+    // Spin only non-held reels
+    const spinPromises = [];
+    for (let i = 0; i < 3; i++) {
+        if (!heldReels[i]) {
+            spinPromises.push(spinReel(reels[i], results[i], 1000 + i * 200, i * 200));
+        }
+    }
+
+    if (spinPromises.length > 0) {
+        await Promise.all(spinPromises);
+    }
+
+    // Store current results
+    currentResults = results;
 
     // Small delay before showing results
     await new Promise(resolve => setTimeout(resolve, 200));
@@ -243,18 +308,29 @@ async function spin() {
         if (result.type === 'jackpot') {
             celebrate();
         }
+
+        // Reset holds after a win
+        heldReels = [false, false, false];
+        holdUsed = true;
     } else {
-        showMessage('Try again!', 'lose');
+        // No win - enable holds if not already used
+        if (!holdUsed) {
+            canHold = true;
+            showMessage('Hold reels and RESPIN, or SPIN again!', '');
+        } else {
+            showMessage('Try again!', 'lose');
+            heldReels = [false, false, false];
+        }
     }
 
     // Check for game over
-    if (credits <= 0) {
+    if (credits <= 0 && (holdUsed || !heldReels.some(h => h))) {
         setTimeout(() => {
             showMessage('GAME OVER - Refreshing...', 'lose');
             setTimeout(() => {
                 credits = 100;
                 bet = 10;
-                updateDisplay();
+                resetHolds();
                 showMessage('New game! Good luck!', '');
             }, 2000);
         }, 1000);
@@ -267,6 +343,7 @@ async function spin() {
 
 // Adjust bet
 function adjustBet(delta) {
+    if (canHold) return; // Can't change bet while holds active
     const newBet = bet + delta;
     if (newBet >= 5 && newBet <= Math.min(50, credits)) {
         bet = newBet;
@@ -279,11 +356,22 @@ spinButton.addEventListener('click', spin);
 betUpButton.addEventListener('click', () => adjustBet(5));
 betDownButton.addEventListener('click', () => adjustBet(-5));
 
+// Hold button listeners
+holdButtons.forEach((btn, i) => {
+    btn.addEventListener('click', () => toggleHold(i));
+});
+
 // Keyboard support
 document.addEventListener('keydown', (e) => {
     if (e.code === 'Space' && !isSpinning) {
         e.preventDefault();
         spin();
+    }
+    // Number keys 1-3 to toggle holds
+    if (canHold && !isSpinning) {
+        if (e.code === 'Digit1' || e.code === 'Numpad1') toggleHold(0);
+        if (e.code === 'Digit2' || e.code === 'Numpad2') toggleHold(1);
+        if (e.code === 'Digit3' || e.code === 'Numpad3') toggleHold(2);
     }
 });
 

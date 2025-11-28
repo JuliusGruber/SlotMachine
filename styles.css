@@ -237,6 +237,74 @@ body::before {
     perspective: 500px;
 }
 
+.reel-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.hold-btn {
+    width: 90px;
+    height: 36px;
+    border-radius: 18px;
+    border: 3px solid #666;
+    background: linear-gradient(180deg, #333 0%, #1a1a1a 100%);
+    color: #666;
+    font-size: 0.9rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    cursor: not-allowed;
+    transition: all 0.2s;
+    text-transform: uppercase;
+}
+
+.hold-btn:not(:disabled) {
+    border-color: #00ff00;
+    background: linear-gradient(180deg, #1a3a1a 0%, #0a200a 100%);
+    color: #00ff00;
+    cursor: pointer;
+    box-shadow:
+        0 0 15px rgba(0, 255, 0, 0.4),
+        inset 0 1px 5px rgba(255, 255, 255, 0.1);
+    animation: hold-pulse 1s ease-in-out infinite;
+}
+
+.hold-btn:not(:disabled):hover {
+    background: linear-gradient(180deg, #2a5a2a 0%, #1a3a1a 100%);
+    transform: scale(1.05);
+    box-shadow:
+        0 0 25px rgba(0, 255, 0, 0.6),
+        inset 0 1px 5px rgba(255, 255, 255, 0.2);
+}
+
+.hold-btn.active {
+    border-color: #ffd700 !important;
+    background: linear-gradient(180deg, #4a3a00 0%, #2a2000 100%) !important;
+    color: #ffd700 !important;
+    box-shadow:
+        0 0 20px rgba(255, 215, 0, 0.6),
+        inset 0 1px 5px rgba(255, 255, 255, 0.2) !important;
+    animation: none !important;
+}
+
+.hold-btn.active::after {
+    content: ' ✓';
+}
+
+@keyframes hold-pulse {
+    0%, 100% {
+        box-shadow:
+            0 0 15px rgba(0, 255, 0, 0.4),
+            inset 0 1px 5px rgba(255, 255, 255, 0.1);
+    }
+    50% {
+        box-shadow:
+            0 0 25px rgba(0, 255, 0, 0.7),
+            inset 0 1px 5px rgba(255, 255, 255, 0.2);
+    }
+}
+
 .reel {
     width: 110px;
     height: 130px;
@@ -624,6 +692,12 @@ body::before {
         width: 85px;
         height: 105px;
         font-size: 3.5rem;
+    }
+
+    .hold-btn {
+        width: 75px;
+        height: 32px;
+        font-size: 0.75rem;
     }
 
     .paytable-grid {
