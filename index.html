@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lucky Slots</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="slot-machine">
+        <div class="header">
+            <h1>LUCKY SLOTS</h1>
+            <div class="credits-display">
+                <span>CREDITS:</span>
+                <span id="credits">100</span>
+            </div>
+        </div>
+
+        <div class="machine-body">
+            <div class="reels-container">
+                <div class="reel" id="reel1">
+                    <div class="reel-strip">
+                        <div class="symbol">🍒</div>
+                    </div>
+                </div>
+                <div class="reel" id="reel2">
+                    <div class="reel-strip">
+                        <div class="symbol">🍋</div>
+                    </div>
+                </div>
+                <div class="reel" id="reel3">
+                    <div class="reel-strip">
+                        <div class="symbol">🍊</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="win-line"></div>
+        </div>
+
+        <div class="controls">
+            <div class="bet-controls">
+                <button id="bet-down" class="bet-btn">-</button>
+                <div class="bet-display">
+                    <span>BET:</span>
+                    <span id="bet-amount">10</span>
+                </div>
+                <button id="bet-up" class="bet-btn">+</button>
+            </div>
+
+            <button id="spin-btn" class="spin-button">
+                <span>SPIN</span>
+            </button>
+        </div>
+
+        <div id="message" class="message"></div>
+
+        <div class="paytable">
+            <h3>PAYTABLE</h3>
+            <div class="paytable-grid">
+                <div class="payout-row">
+                    <span>💎 💎 💎</span>
+                    <span>x100</span>
+                </div>
+                <div class="payout-row">
+                    <span>7️⃣ 7️⃣ 7️⃣</span>
+                    <span>x50</span>
+                </div>
+                <div class="payout-row">
+                    <span>🍀 🍀 🍀</span>
+                    <span>x25</span>
+                </div>
+                <div class="payout-row">
+                    <span>🔔 🔔 🔔</span>
+                    <span>x20</span>
+                </div>
+                <div class="payout-row">
+                    <span>⭐ ⭐ ⭐</span>
+                    <span>x15</span>
+                </div>
+                <div class="payout-row">
+                    <span>🍇 🍇 🍇</span>
+                    <span>x10</span>
+                </div>
+                <div class="payout-row">
+                    <span>🍊 🍊 🍊</span>
+                    <span>x8</span>
+                </div>
+                <div class="payout-row">
+                    <span>🍋 🍋 🍋</span>
+                    <span>x5</span>
+                </div>
+                <div class="payout-row">
+                    <span>🍒 🍒 🍒</span>
+                    <span>x3</span>
+                </div>
+                <div class="payout-row">
+                    <span>🍒 🍒 ❓</span>
+                    <span>x2</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
