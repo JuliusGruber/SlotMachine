@@ -237,13 +237,6 @@ body::before {
     perspective: 500px;
 }
 
-.reel-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-}
-
 .hold-btn {
     width: 90px;
     height: 36px;
@@ -692,12 +685,6 @@ body::before {
         width: 85px;
         height: 105px;
         font-size: 3.5rem;
-    }
-
-    .hold-btn {
-        width: 75px;
-        height: 32px;
-        font-size: 0.75rem;
     }
 
     .paytable-grid {
