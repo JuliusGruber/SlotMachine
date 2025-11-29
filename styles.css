@@ -7,12 +7,14 @@
 }
 
 html {
-    height: auto;
-    min-height: 100%;
+    height: -webkit-fill-available;
 }
 
 body {
-    min-height: 100%;
+    position: relative;
+    min-height: 100vh;
+    min-height: 100dvh;
+    min-height: -webkit-fill-available;
     display: block;
     background:
         linear-gradient(180deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0.7) 100%),
