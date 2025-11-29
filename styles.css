@@ -40,193 +40,284 @@ body::before {
     z-index: 0;
 }
 
+/* ==================== PHOTO-REALISTIC SLOT MACHINE ==================== */
+
 .slot-machine {
     position: relative;
-    background: linear-gradient(180deg,
-        rgba(40, 10, 10, 0.95) 0%,
-        rgba(80, 20, 20, 0.9) 20%,
-        rgba(60, 15, 15, 0.92) 50%,
-        rgba(80, 20, 20, 0.9) 80%,
-        rgba(40, 10, 10, 0.95) 100%);
-    border-radius: 30px;
-    padding: 40px 35px 35px;
-    box-shadow:
-        0 0 80px rgba(255, 150, 50, 0.3),
-        0 0 120px rgba(255, 50, 50, 0.2),
-        inset 0 2px 30px rgba(255, 200, 150, 0.1),
-        inset 0 -5px 30px rgba(0, 0, 0, 0.6);
-    border: 6px solid;
-    border-image: linear-gradient(180deg, #d4a574, #8b6914, #d4a574) 1;
+    /* Realistic dark cherry wood / mahogany cabinet */
+    background:
+        /* Wood grain texture simulation */
+        repeating-linear-gradient(
+            90deg,
+            transparent 0px,
+            transparent 2px,
+            rgba(0, 0, 0, 0.03) 2px,
+            rgba(0, 0, 0, 0.03) 4px
+        ),
+        /* Main wood gradient */
+        linear-gradient(180deg,
+            #4a1a1a 0%,
+            #6b2020 8%,
+            #5a1818 15%,
+            #7a2828 50%,
+            #5a1818 85%,
+            #6b2020 92%,
+            #4a1a1a 100%);
+    border-radius: 20px;
+    padding: 35px 30px 30px;
     max-width: 520px;
     width: 100%;
     margin: 0 auto;
     z-index: 1;
-    backdrop-filter: blur(10px);
+    /* Realistic heavy shadow for a physical object */
+    box-shadow:
+        /* Main drop shadow */
+        0 25px 60px rgba(0, 0, 0, 0.7),
+        0 10px 30px rgba(0, 0, 0, 0.5),
+        /* Subtle ambient light from above */
+        inset 0 1px 0 rgba(255, 255, 255, 0.05),
+        /* Inner depth shadow */
+        inset 0 -3px 15px rgba(0, 0, 0, 0.4);
 }
 
-/* Brushed metal trim around machine */
+/* Chrome/brass outer frame - realistic metal */
 .slot-machine::before {
     content: '';
     position: absolute;
-    top: -10px;
-    left: -10px;
-    right: -10px;
-    bottom: -10px;
-    background: linear-gradient(180deg,
-        #d4a574 0%,
-        #8b6914 20%,
-        #c9a227 50%,
-        #8b6914 80%,
-        #d4a574 100%);
-    border-radius: 35px;
+    top: -8px;
+    left: -8px;
+    right: -8px;
+    bottom: -8px;
+    /* Realistic brushed brass/gold metal */
+    background:
+        /* Brushed metal texture */
+        repeating-linear-gradient(
+            90deg,
+            transparent 0px,
+            rgba(255, 255, 255, 0.03) 1px,
+            transparent 2px
+        ),
+        /* Metal gradient with realistic highlights */
+        linear-gradient(180deg,
+            #d4b896 0%,
+            #c9a227 5%,
+            #a8860d 15%,
+            #d4af37 25%,
+            #b8942a 40%,
+            #8b7014 50%,
+            #b8942a 60%,
+            #d4af37 75%,
+            #a8860d 85%,
+            #c9a227 95%,
+            #d4b896 100%);
+    border-radius: 25px;
     z-index: -1;
     box-shadow:
-        0 15px 50px rgba(0, 0, 0, 0.8),
-        0 0 30px rgba(255, 180, 100, 0.2);
+        /* Metal rim highlight */
+        inset 0 1px 0 rgba(255, 255, 255, 0.4),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.3),
+        /* Heavy base shadow */
+        0 20px 50px rgba(0, 0, 0, 0.8),
+        0 5px 20px rgba(0, 0, 0, 0.6),
+        /* Subtle gold reflection */
+        0 0 40px rgba(212, 175, 55, 0.15);
 }
 
-/* Decorative inner border glow */
+/* Inner chrome bezel */
 .slot-machine::after {
     content: '';
     position: absolute;
-    top: 8px;
-    left: 8px;
-    right: 8px;
-    bottom: 8px;
-    border-radius: 22px;
-    border: 2px solid rgba(255, 200, 150, 0.2);
+    top: 4px;
+    left: 4px;
+    right: 4px;
+    bottom: 4px;
+    border-radius: 16px;
+    /* Chrome inner bezel */
+    border: 2px solid transparent;
+    background:
+        linear-gradient(180deg, rgba(255,220,180,0.15) 0%, transparent 50%, rgba(0,0,0,0.2) 100%) padding-box,
+        linear-gradient(180deg, #c9a050 0%, #8b6914 50%, #c9a050 100%) border-box;
     pointer-events: none;
-    box-shadow: inset 0 0 20px rgba(255, 150, 100, 0.1);
 }
+
+/* ==================== HEADER & TITLE ==================== */
 
 .header {
     text-align: center;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
     position: relative;
 }
 
 .header h1 {
     font-family: 'Playfair Display', serif;
-    color: #f0c050;
-    font-size: 2.8rem;
+    color: #ffe566;
+    font-size: 2.6rem;
     text-transform: uppercase;
+    /* Realistic neon/backlit sign effect */
     text-shadow:
-        0 0 10px #f0a030,
-        0 0 20px #e08020,
-        0 0 40px #d06010,
-        0 0 60px rgba(255, 100, 50, 0.5),
-        2px 2px 0 #5a3010,
-        4px 4px 0 #000;
-    letter-spacing: 6px;
-    margin-bottom: 20px;
-    animation: neon-flicker 4s ease-in-out infinite;
+        0 0 5px #ffe566,
+        0 0 10px #ffcc00,
+        0 0 20px #ff9900,
+        0 0 40px #ff6600,
+        0 0 60px rgba(255, 100, 0, 0.5),
+        /* 3D depth */
+        1px 1px 0 #aa6600,
+        2px 2px 0 #884400,
+        3px 3px 2px rgba(0, 0, 0, 0.8);
+    letter-spacing: 4px;
+    margin-bottom: 15px;
+    animation: neon-glow 3s ease-in-out infinite;
 }
 
-@keyframes neon-flicker {
+@keyframes neon-glow {
     0%, 100% {
         text-shadow:
-            0 0 10px #f0a030,
-            0 0 20px #e08020,
-            0 0 40px #d06010,
-            0 0 60px rgba(255, 100, 50, 0.5),
-            2px 2px 0 #5a3010,
-            4px 4px 0 #000;
+            0 0 5px #ffe566,
+            0 0 10px #ffcc00,
+            0 0 20px #ff9900,
+            0 0 40px #ff6600,
+            0 0 60px rgba(255, 100, 0, 0.5),
+            1px 1px 0 #aa6600,
+            2px 2px 0 #884400,
+            3px 3px 2px rgba(0, 0, 0, 0.8);
     }
     50% {
         text-shadow:
-            0 0 15px #f0a030,
-            0 0 30px #e08020,
-            0 0 50px #d06010,
-            0 0 80px rgba(255, 100, 50, 0.6),
-            2px 2px 0 #5a3010,
-            4px 4px 0 #000;
+            0 0 8px #ffe566,
+            0 0 15px #ffcc00,
+            0 0 30px #ff9900,
+            0 0 50px #ff6600,
+            0 0 80px rgba(255, 100, 0, 0.6),
+            1px 1px 0 #aa6600,
+            2px 2px 0 #884400,
+            3px 3px 2px rgba(0, 0, 0, 0.8);
     }
 }
 
+/* Realistic LED display panel */
 .credits-display {
-    background: linear-gradient(180deg, rgba(30, 20, 10, 0.9) 0%, rgba(10, 5, 0, 0.95) 100%);
-    padding: 12px 30px;
-    border-radius: 15px;
+    /* Black LCD panel with slight transparency */
+    background:
+        linear-gradient(180deg,
+            #1a1a1a 0%,
+            #0d0d0d 50%,
+            #1a1a1a 100%);
+    padding: 10px 25px;
+    border-radius: 8px;
     display: inline-block;
-    border: 2px solid #c9a050;
+    /* Chrome bezel around display */
+    border: 3px solid;
+    border-color: #888 #666 #555 #777;
     box-shadow:
-        inset 0 2px 15px rgba(0, 0, 0, 0.8),
-        0 0 15px rgba(200, 150, 50, 0.3);
+        /* Recessed panel effect */
+        inset 0 2px 8px rgba(0, 0, 0, 0.9),
+        inset 0 0 20px rgba(0, 0, 0, 0.5),
+        /* Outer bezel highlight */
+        0 1px 0 rgba(255, 255, 255, 0.1),
+        0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .credits-display span:first-child {
-    color: #c9a050;
-    font-size: 0.9rem;
-    margin-right: 10px;
+    color: #ff6b35;
+    font-size: 0.8rem;
+    margin-right: 8px;
     text-transform: uppercase;
     letter-spacing: 2px;
+    text-shadow: 0 0 5px rgba(255, 107, 53, 0.5);
 }
 
 #credits {
-    color: #00ff00;
-    font-size: 1.8rem;
+    color: #00ff41;
+    font-size: 1.6rem;
     font-weight: bold;
     font-family: 'Courier New', monospace;
+    /* Realistic LED glow */
     text-shadow:
-        0 0 10px #00ff00,
-        0 0 20px #00ff00;
-    animation: credit-glow 2s ease-in-out infinite;
+        0 0 5px #00ff41,
+        0 0 10px #00ff41,
+        0 0 20px rgba(0, 255, 65, 0.5);
+    animation: led-pulse 2s ease-in-out infinite;
 }
 
-@keyframes credit-glow {
-    0%, 100% { text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00; }
-    50% { text-shadow: 0 0 20px #00ff00, 0 0 40px #00ff00, 0 0 60px #00ff00; }
+@keyframes led-pulse {
+    0%, 100% {
+        text-shadow: 0 0 5px #00ff41, 0 0 10px #00ff41, 0 0 20px rgba(0, 255, 65, 0.5);
+        opacity: 1;
+    }
+    50% {
+        text-shadow: 0 0 8px #00ff41, 0 0 15px #00ff41, 0 0 30px rgba(0, 255, 65, 0.7);
+        opacity: 0.95;
+    }
 }
+
+/* ==================== MACHINE BODY / REEL HOUSING ==================== */
 
 .machine-body {
-    background: linear-gradient(180deg,
-        rgba(20, 15, 10, 0.95) 0%,
-        rgba(15, 10, 5, 0.98) 50%,
-        rgba(20, 15, 10, 0.95) 100%);
-    border-radius: 20px;
-    padding: 25px;
-    margin-bottom: 25px;
+    /* Recessed black panel for reels */
+    background:
+        linear-gradient(180deg,
+            #0a0a0a 0%,
+            #151515 10%,
+            #1a1a1a 50%,
+            #151515 90%,
+            #0a0a0a 100%);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
     position: relative;
-    border: 4px solid #8b6520;
+    /* Thick chrome frame */
+    border: 4px solid;
+    border-color: #999 #777 #666 #888;
     box-shadow:
-        inset 0 0 50px rgba(0, 0, 0, 0.9),
-        inset 0 0 20px rgba(200, 150, 50, 0.05),
-        0 10px 30px rgba(0, 0, 0, 0.5);
+        /* Deep recessed effect */
+        inset 0 5px 20px rgba(0, 0, 0, 0.9),
+        inset 0 -2px 10px rgba(0, 0, 0, 0.5),
+        /* Glass-like inner highlight */
+        inset 0 1px 0 rgba(255, 255, 255, 0.05),
+        /* Outer frame shadow */
+        0 4px 15px rgba(0, 0, 0, 0.4);
 }
 
-/* Decorative corner accents */
+/* Decorative chrome corner bolts */
 .machine-body::before,
 .machine-body::after {
     content: '';
     position: absolute;
-    width: 20px;
-    height: 20px;
+    width: 16px;
+    height: 16px;
     border-radius: 50%;
-    background: radial-gradient(circle, #f0c050 0%, #a07020 50%, #604010 100%);
-    box-shadow: 0 0 10px rgba(240, 180, 80, 0.5);
-    animation: bulb-flash 2s ease-in-out infinite alternate;
+    /* Realistic chrome screw head */
+    background:
+        radial-gradient(circle at 30% 30%,
+            #fff 0%,
+            #ccc 10%,
+            #999 30%,
+            #666 60%,
+            #444 100%);
+    box-shadow:
+        inset 0 -2px 4px rgba(0, 0, 0, 0.5),
+        0 2px 4px rgba(0, 0, 0, 0.5);
+    /* Cross slot in screw */
+    border: 1px solid #555;
 }
 
 .machine-body::before {
-    top: -10px;
-    left: -10px;
+    top: 8px;
+    left: 8px;
 }
 
 .machine-body::after {
-    top: -10px;
-    right: -10px;
+    top: 8px;
+    right: 8px;
 }
 
-@keyframes bulb-flash {
-    0% { box-shadow: 0 0 10px rgba(240, 180, 80, 0.5); }
-    100% { box-shadow: 0 0 20px rgba(240, 180, 80, 0.8), 0 0 30px rgba(255, 150, 50, 0.4); }
-}
+/* ==================== REELS - GLASS COVERED DRUMS ==================== */
 
 .reels-container {
     display: flex;
     justify-content: center;
-    gap: 15px;
-    perspective: 500px;
+    gap: 12px;
+    perspective: 800px;
 }
 
 .reel-wrapper {
@@ -236,106 +327,65 @@ body::before {
     gap: 10px;
 }
 
-.hold-btn {
-    width: 90px;
-    height: 36px;
-    border-radius: 18px;
-    border: 3px solid #666;
-    background: linear-gradient(180deg, #333 0%, #1a1a1a 100%);
-    color: #666;
-    font-size: 0.9rem;
-    font-weight: bold;
-    letter-spacing: 2px;
-    cursor: not-allowed;
-    transition: all 0.2s;
-    text-transform: uppercase;
-}
-
-.hold-btn:not(:disabled) {
-    border-color: #00ff00;
-    background: linear-gradient(180deg, #1a3a1a 0%, #0a200a 100%);
-    color: #00ff00;
-    cursor: pointer;
-    box-shadow:
-        0 0 15px rgba(0, 255, 0, 0.4),
-        inset 0 1px 5px rgba(255, 255, 255, 0.1);
-    animation: hold-pulse 1s ease-in-out infinite;
-}
-
-.hold-btn:not(:disabled):hover {
-    background: linear-gradient(180deg, #2a5a2a 0%, #1a3a1a 100%);
-    transform: scale(1.05);
-    box-shadow:
-        0 0 25px rgba(0, 255, 0, 0.6),
-        inset 0 1px 5px rgba(255, 255, 255, 0.2);
-}
-
-.hold-btn.active {
-    border-color: #ffd700 !important;
-    background: linear-gradient(180deg, #4a3a00 0%, #2a2000 100%) !important;
-    color: #ffd700 !important;
-    box-shadow:
-        0 0 20px rgba(255, 215, 0, 0.6),
-        inset 0 1px 5px rgba(255, 255, 255, 0.2) !important;
-    animation: none !important;
-}
-
-.hold-btn.active::after {
-    content: ' ✓';
-}
-
-@keyframes hold-pulse {
-    0%, 100% {
-        box-shadow:
-            0 0 15px rgba(0, 255, 0, 0.4),
-            inset 0 1px 5px rgba(255, 255, 255, 0.1);
-    }
-    50% {
-        box-shadow:
-            0 0 25px rgba(0, 255, 0, 0.7),
-            inset 0 1px 5px rgba(255, 255, 255, 0.2);
-    }
-}
-
 .reel {
-    width: 110px;
-    height: 130px;
-    background: linear-gradient(180deg,
-        #fffef8 0%,
-        #f5f0e0 20%,
-        #fffef8 50%,
-        #f5f0e0 80%,
-        #fffef8 100%);
-    border-radius: 15px;
+    width: 105px;
+    height: 125px;
+    /* Bright reel strip background */
+    background:
+        linear-gradient(180deg,
+            #f8f6f0 0%,
+            #fffef8 20%,
+            #f8f6f0 50%,
+            #fffef8 80%,
+            #f8f6f0 100%);
+    border-radius: 10px;
     overflow: hidden;
     position: relative;
+    /* Heavy chrome frame around each reel */
+    border: 5px solid;
+    border-color: #aaa #888 #777 #999;
+    /* Glass cover and depth effect */
     box-shadow:
-        inset 0 0 30px rgba(100, 80, 50, 0.15),
-        0 0 15px rgba(200, 150, 80, 0.4),
-        0 5px 20px rgba(0, 0, 0, 0.5);
-    border: 4px solid #c9a050;
-    transform: rotateX(5deg);
+        /* Chrome frame 3D effect */
+        inset 0 0 0 1px #ccc,
+        /* Glass reflection */
+        inset 0 -40px 40px rgba(255, 255, 255, 0.1),
+        /* Depth shadow */
+        0 8px 20px rgba(0, 0, 0, 0.5),
+        0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
-.reel::before,
+/* Glass cover effect - top gradient */
+.reel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 40%;
+    background: linear-gradient(180deg,
+        rgba(255, 255, 255, 0.4) 0%,
+        rgba(255, 255, 255, 0.1) 50%,
+        transparent 100%);
+    z-index: 15;
+    pointer-events: none;
+    border-radius: 5px 5px 0 0;
+}
+
+/* Shadow at bottom of glass */
 .reel::after {
     content: '';
     position: absolute;
+    bottom: 0;
     left: 0;
     right: 0;
-    height: 35px;
-    z-index: 10;
+    height: 35%;
+    background: linear-gradient(0deg,
+        rgba(0, 0, 0, 0.3) 0%,
+        rgba(0, 0, 0, 0.1) 50%,
+        transparent 100%);
+    z-index: 15;
     pointer-events: none;
-}
-
-.reel::before {
-    top: 0;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, transparent 100%);
-}
-
-.reel::after {
-    bottom: 0;
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.5) 0%, transparent 100%);
 }
 
 .reel-strip {
@@ -346,205 +396,368 @@ body::before {
 }
 
 .symbol {
-    width: 110px;
-    height: 130px;
+    width: 105px;
+    height: 125px;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 4.5rem;
+    font-size: 4rem;
     flex-shrink: 0;
-    filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.3));
+    /* Printed symbol on reel strip */
+    filter: drop-shadow(1px 1px 1px rgba(0,0,0,0.3));
 }
 
+/* Win line - realistic light bar */
 .win-line {
     position: absolute;
-    left: 15px;
-    right: 15px;
+    left: 10px;
+    right: 10px;
     top: 50%;
-    height: 6px;
+    height: 4px;
     background: linear-gradient(90deg,
-        transparent,
-        #ff6030,
-        #ffc040,
-        #ff6030,
-        transparent);
+        transparent 0%,
+        #ff3300 10%,
+        #ffff00 50%,
+        #ff3300 90%,
+        transparent 100%);
     transform: translateY(-50%);
     opacity: 0;
     transition: opacity 0.3s;
     box-shadow:
-        0 0 10px #ff6030,
-        0 0 20px #ff8040,
-        0 0 30px #ffc040;
-    border-radius: 3px;
+        0 0 10px #ff3300,
+        0 0 20px #ff6600,
+        0 0 40px rgba(255, 100, 0, 0.5);
+    border-radius: 2px;
 }
 
 .win-line.show {
     opacity: 1;
-    animation: pulse-line 0.3s ease-in-out infinite;
+    animation: win-line-pulse 0.4s ease-in-out infinite;
 }
 
-@keyframes pulse-line {
+@keyframes win-line-pulse {
     0%, 100% {
         opacity: 1;
-        box-shadow: 0 0 10px #ff6030, 0 0 20px #ff8040, 0 0 30px #ffc040;
+        box-shadow: 0 0 10px #ff3300, 0 0 20px #ff6600, 0 0 40px rgba(255, 100, 0, 0.5);
     }
     50% {
-        opacity: 0.7;
-        box-shadow: 0 0 20px #ff6030, 0 0 40px #ff8040, 0 0 60px #ffc040;
+        opacity: 0.8;
+        box-shadow: 0 0 20px #ff3300, 0 0 40px #ff6600, 0 0 60px rgba(255, 100, 0, 0.7);
     }
 }
+
+/* ==================== HOLD BUTTONS - ARCADE STYLE ==================== */
+
+.hold-btn {
+    width: 85px;
+    height: 32px;
+    border-radius: 6px;
+    /* Recessed button housing */
+    border: 2px solid #444;
+    background:
+        linear-gradient(180deg, #2a2a2a 0%, #1a1a1a 50%, #222 100%);
+    color: #555;
+    font-size: 0.75rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    cursor: not-allowed;
+    transition: all 0.15s;
+    text-transform: uppercase;
+    box-shadow:
+        inset 0 2px 4px rgba(0, 0, 0, 0.5),
+        0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.hold-btn:not(:disabled) {
+    /* Glowing green arcade button */
+    border-color: #00cc00;
+    background:
+        radial-gradient(ellipse at 50% 30%, #00ff00 0%, #00cc00 40%, #009900 100%);
+    color: #003300;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow:
+        /* Button dome highlight */
+        inset 0 -8px 15px rgba(0, 0, 0, 0.3),
+        inset 0 3px 8px rgba(255, 255, 255, 0.4),
+        /* Glow effect */
+        0 0 15px rgba(0, 255, 0, 0.5),
+        0 4px 8px rgba(0, 0, 0, 0.4);
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
+    animation: hold-glow 1.5s ease-in-out infinite;
+}
+
+.hold-btn:not(:disabled):hover {
+    background:
+        radial-gradient(ellipse at 50% 30%, #33ff33 0%, #00ee00 40%, #00aa00 100%);
+    transform: translateY(-1px);
+    box-shadow:
+        inset 0 -8px 15px rgba(0, 0, 0, 0.3),
+        inset 0 3px 8px rgba(255, 255, 255, 0.5),
+        0 0 25px rgba(0, 255, 0, 0.7),
+        0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+.hold-btn:not(:disabled):active {
+    transform: translateY(1px);
+    box-shadow:
+        inset 0 2px 8px rgba(0, 0, 0, 0.5),
+        0 0 10px rgba(0, 255, 0, 0.4),
+        0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.hold-btn.active {
+    border-color: #ffaa00 !important;
+    background:
+        radial-gradient(ellipse at 50% 30%, #ffdd00 0%, #ffaa00 40%, #cc8800 100%) !important;
+    color: #553300 !important;
+    box-shadow:
+        inset 0 -8px 15px rgba(0, 0, 0, 0.3),
+        inset 0 3px 8px rgba(255, 255, 255, 0.4),
+        0 0 20px rgba(255, 170, 0, 0.6),
+        0 4px 8px rgba(0, 0, 0, 0.4) !important;
+    animation: none !important;
+}
+
+.hold-btn.active::after {
+    content: ' ✓';
+}
+
+@keyframes hold-glow {
+    0%, 100% {
+        box-shadow:
+            inset 0 -8px 15px rgba(0, 0, 0, 0.3),
+            inset 0 3px 8px rgba(255, 255, 255, 0.4),
+            0 0 15px rgba(0, 255, 0, 0.5),
+            0 4px 8px rgba(0, 0, 0, 0.4);
+    }
+    50% {
+        box-shadow:
+            inset 0 -8px 15px rgba(0, 0, 0, 0.3),
+            inset 0 3px 8px rgba(255, 255, 255, 0.4),
+            0 0 25px rgba(0, 255, 0, 0.8),
+            0 4px 8px rgba(0, 0, 0, 0.4);
+    }
+}
+
+/* ==================== CONTROLS SECTION ==================== */
 
 .controls {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 25px;
-    margin-bottom: 25px;
+    gap: 20px;
+    margin-bottom: 20px;
     flex-wrap: wrap;
 }
 
 .bet-controls {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
 }
 
+/* Bet +/- buttons - chrome arcade buttons */
 .bet-btn {
-    width: 45px;
-    height: 45px;
+    width: 42px;
+    height: 42px;
     border-radius: 50%;
-    border: 3px solid #c9a050;
-    background: linear-gradient(180deg, #6a3020 0%, #3a1810 100%);
-    color: #f0c060;
-    font-size: 1.8rem;
+    /* Chrome dome button */
+    border: 3px solid;
+    border-color: #999 #777 #666 #888;
+    background:
+        radial-gradient(ellipse at 50% 25%,
+            #f5f5f5 0%,
+            #ddd 20%,
+            #aaa 50%,
+            #888 80%,
+            #666 100%);
+    color: #333;
+    font-size: 1.6rem;
     font-weight: bold;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: all 0.15s;
     box-shadow:
-        0 4px 15px rgba(0, 0, 0, 0.5),
-        0 0 10px rgba(200, 150, 80, 0.2);
+        /* 3D dome effect */
+        inset 0 -5px 15px rgba(0, 0, 0, 0.4),
+        inset 0 5px 10px rgba(255, 255, 255, 0.8),
+        0 4px 10px rgba(0, 0, 0, 0.5),
+        0 1px 3px rgba(0, 0, 0, 0.3);
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
 }
 
 .bet-btn:hover {
-    background: linear-gradient(180deg, #8a4030 0%, #5a2820 100%);
-    transform: scale(1.15);
+    background:
+        radial-gradient(ellipse at 50% 25%,
+            #fff 0%,
+            #eee 20%,
+            #bbb 50%,
+            #999 80%,
+            #777 100%);
+    transform: translateY(-2px);
     box-shadow:
-        0 6px 20px rgba(0, 0, 0, 0.6),
-        0 0 20px rgba(200, 150, 80, 0.4);
+        inset 0 -5px 15px rgba(0, 0, 0, 0.4),
+        inset 0 5px 10px rgba(255, 255, 255, 0.9),
+        0 6px 15px rgba(0, 0, 0, 0.5),
+        0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 .bet-btn:active {
-    transform: scale(0.95);
+    transform: translateY(2px);
+    box-shadow:
+        inset 0 3px 10px rgba(0, 0, 0, 0.5),
+        0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
+/* Bet display - LCD panel */
 .bet-display {
-    background: linear-gradient(180deg, rgba(30, 20, 10, 0.9) 0%, rgba(10, 5, 0, 0.95) 100%);
-    padding: 10px 25px;
-    border-radius: 10px;
-    border: 2px solid #a08040;
-    box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.8);
+    background:
+        linear-gradient(180deg, #1a1a1a 0%, #0d0d0d 50%, #1a1a1a 100%);
+    padding: 8px 20px;
+    border-radius: 6px;
+    border: 3px solid;
+    border-color: #888 #666 #555 #777;
+    box-shadow:
+        inset 0 2px 8px rgba(0, 0, 0, 0.9),
+        0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .bet-display span:first-child {
-    color: #c9a050;
-    font-size: 0.85rem;
-    margin-right: 10px;
+    color: #ff6b35;
+    font-size: 0.75rem;
+    margin-right: 8px;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
 
 #bet-amount {
-    color: #f0c060;
-    font-size: 1.4rem;
+    color: #ffcc00;
+    font-size: 1.3rem;
     font-weight: bold;
     font-family: 'Courier New', monospace;
-    text-shadow: 0 0 10px rgba(240, 180, 80, 0.5);
+    text-shadow: 0 0 8px rgba(255, 204, 0, 0.6);
 }
 
+/* ==================== SPIN BUTTON - BIG RED ARCADE BUTTON ==================== */
+
 .spin-button {
-    width: 140px;
-    height: 70px;
+    width: 130px;
+    height: 65px;
     border-radius: 35px;
-    border: 4px solid #c9a050;
+    /* Heavy chrome bezel */
+    border: 5px solid;
+    border-color: #aaa #888 #777 #999;
+    /* Big red dome button */
     background:
-        linear-gradient(180deg, #c04020 0%, #903018 30%, #602010 70%, #401008 100%);
-    color: #f0c060;
-    font-size: 1.5rem;
+        radial-gradient(ellipse at 50% 25%,
+            #ff6666 0%,
+            #ee3333 20%,
+            #cc2222 50%,
+            #aa1111 80%,
+            #881010 100%);
+    color: #ffeecc;
+    font-size: 1.4rem;
     font-weight: bold;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: all 0.15s;
     box-shadow:
-        0 8px 30px rgba(150, 50, 20, 0.5),
-        0 0 20px rgba(200, 150, 80, 0.3),
-        inset 0 2px 15px rgba(255, 200, 150, 0.15);
+        /* 3D dome effect */
+        inset 0 -10px 25px rgba(0, 0, 0, 0.5),
+        inset 0 8px 15px rgba(255, 200, 200, 0.4),
+        /* Base shadow */
+        0 8px 25px rgba(0, 0, 0, 0.6),
+        0 3px 8px rgba(0, 0, 0, 0.4),
+        /* Red glow */
+        0 0 20px rgba(255, 50, 50, 0.3);
     text-shadow:
-        0 0 10px rgba(240, 180, 80, 0.5),
-        2px 2px 0 #401008;
-    letter-spacing: 3px;
+        0 1px 0 rgba(255, 255, 255, 0.2),
+        0 -1px 2px rgba(0, 0, 0, 0.5);
+    letter-spacing: 2px;
     text-transform: uppercase;
     position: relative;
     overflow: hidden;
 }
 
-/* Shine effect on spin button */
+/* Shine sweep effect */
 .spin-button::before {
     content: '';
     position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
     background: linear-gradient(
-        45deg,
-        transparent 30%,
+        90deg,
+        transparent 0%,
         rgba(255, 255, 255, 0.3) 50%,
-        transparent 70%
+        transparent 100%
     );
-    transform: rotate(45deg) translateX(-100%);
-    transition: transform 0.6s;
+    transition: left 0.5s;
 }
 
 .spin-button:hover::before {
-    transform: rotate(45deg) translateX(100%);
+    left: 100%;
 }
 
 .spin-button:hover:not(:disabled) {
-    background: linear-gradient(180deg, #d05030 0%, #a04020 30%, #703018 70%, #502010 100%);
-    transform: scale(1.08);
+    background:
+        radial-gradient(ellipse at 50% 25%,
+            #ff8888 0%,
+            #ff4444 20%,
+            #dd3333 50%,
+            #bb2222 80%,
+            #991515 100%);
+    transform: translateY(-3px);
     box-shadow:
-        0 10px 40px rgba(180, 80, 40, 0.6),
-        0 0 40px rgba(200, 150, 80, 0.4),
-        inset 0 2px 15px rgba(255, 200, 150, 0.2);
+        inset 0 -10px 25px rgba(0, 0, 0, 0.5),
+        inset 0 8px 15px rgba(255, 200, 200, 0.5),
+        0 12px 35px rgba(0, 0, 0, 0.6),
+        0 5px 12px rgba(0, 0, 0, 0.4),
+        0 0 35px rgba(255, 50, 50, 0.5);
 }
 
 .spin-button:active:not(:disabled) {
-    transform: scale(0.98);
+    transform: translateY(3px);
+    box-shadow:
+        inset 0 5px 20px rgba(0, 0, 0, 0.6),
+        0 2px 8px rgba(0, 0, 0, 0.4),
+        0 0 15px rgba(255, 50, 50, 0.3);
 }
 
 .spin-button:disabled {
-    background: linear-gradient(180deg, #4a4035 0%, #302820 50%, #201810 100%);
-    border-color: #5a4a3a;
+    background:
+        radial-gradient(ellipse at 50% 25%,
+            #666 0%,
+            #555 20%,
+            #444 50%,
+            #333 80%,
+            #222 100%);
+    border-color: #555 #444 #333 #444;
     cursor: not-allowed;
-    box-shadow: none;
-    color: #6a5a4a;
+    box-shadow:
+        inset 0 -5px 15px rgba(0, 0, 0, 0.5),
+        0 4px 10px rgba(0, 0, 0, 0.3);
+    color: #666;
 }
 
 .spin-button.spinning {
-    animation: button-pulse 0.2s ease-in-out infinite;
+    animation: spin-press 0.15s ease-in-out infinite;
 }
 
-@keyframes button-pulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(0.95); }
+@keyframes spin-press {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(2px); }
 }
+
+/* ==================== MESSAGE DISPLAY ==================== */
 
 .message {
     text-align: center;
-    min-height: 50px;
-    padding: 12px;
-    font-size: 1.4rem;
+    min-height: 45px;
+    padding: 10px;
+    font-size: 1.3rem;
     font-weight: bold;
-    color: #f0c060;
+    color: #ffcc00;
     text-shadow:
         0 0 10px currentColor,
         0 0 20px currentColor;
@@ -554,18 +767,18 @@ body::before {
 }
 
 .message.win {
-    color: #00ff00;
+    color: #00ff41;
     animation: win-flash 0.4s ease-in-out 4;
 }
 
 .message.lose {
-    color: #ff6666;
-    text-shadow: 0 0 10px #ff0000;
+    color: #ff4444;
+    text-shadow: 0 0 10px #ff0000, 0 0 20px rgba(255, 0, 0, 0.5);
 }
 
 .message.jackpot {
     color: #ffd700;
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     animation: jackpot-flash 0.2s ease-in-out 8;
 }
 
@@ -573,12 +786,12 @@ body::before {
     0%, 100% {
         opacity: 1;
         transform: scale(1);
-        color: #00ff00;
+        color: #00ff41;
     }
     50% {
-        opacity: 0.8;
-        transform: scale(1.15);
-        color: #ffff00;
+        opacity: 0.9;
+        transform: scale(1.1);
+        color: #66ff66;
     }
 }
 
@@ -591,72 +804,78 @@ body::before {
     }
     50% {
         opacity: 1;
-        transform: scale(1.25);
+        transform: scale(1.2);
         text-shadow: 0 0 30px #ffd700, 0 0 60px #ff8c00, 0 0 90px #ff0000;
         color: #fff;
     }
 }
 
+/* ==================== PAYTABLE ==================== */
+
 .paytable {
     background:
-        linear-gradient(180deg, rgba(60, 30, 15, 0.4) 0%, rgba(20, 10, 5, 0.7) 50%, rgba(60, 30, 15, 0.4) 100%);
-    border-radius: 15px;
-    padding: 20px;
-    border: 2px solid #a08040;
+        linear-gradient(180deg,
+            rgba(30, 15, 10, 0.9) 0%,
+            rgba(15, 8, 5, 0.95) 50%,
+            rgba(30, 15, 10, 0.9) 100%);
+    border-radius: 10px;
+    padding: 15px;
+    border: 2px solid;
+    border-color: #665544 #554433 #443322 #554433;
     box-shadow:
-        inset 0 0 20px rgba(0, 0, 0, 0.5),
-        0 0 10px rgba(200, 150, 80, 0.15);
+        inset 0 2px 10px rgba(0, 0, 0, 0.6),
+        0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 .paytable h3 {
     color: #d4a060;
     text-align: center;
-    margin-bottom: 15px;
-    font-size: 1.1rem;
-    letter-spacing: 4px;
+    margin-bottom: 12px;
+    font-size: 1rem;
+    letter-spacing: 3px;
     text-transform: uppercase;
-    text-shadow: 0 0 10px rgba(200, 150, 80, 0.5);
+    text-shadow: 0 0 8px rgba(200, 150, 80, 0.4);
 }
 
 .paytable-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 8px;
+    gap: 6px;
 }
 
 .payout-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 8px 12px;
-    background: rgba(0, 0, 0, 0.3);
-    border-radius: 8px;
-    border: 1px solid rgba(200, 150, 80, 0.2);
+    padding: 6px 10px;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 5px;
+    border: 1px solid rgba(100, 80, 60, 0.3);
     transition: all 0.2s;
 }
 
 .payout-row:hover {
-    background: rgba(200, 150, 80, 0.15);
-    border-color: #c9a050;
-    transform: scale(1.02);
+    background: rgba(100, 80, 60, 0.2);
+    border-color: rgba(200, 150, 80, 0.4);
 }
 
 .payout-row span:first-child {
-    font-size: 1.1rem;
+    font-size: 1rem;
 }
 
 .payout-row span:last-child {
-    color: #00ff00;
+    color: #00ff41;
     font-weight: bold;
     font-family: 'Courier New', monospace;
-    font-size: 1rem;
-    text-shadow: 0 0 5px #00ff00;
+    font-size: 0.9rem;
+    text-shadow: 0 0 5px rgba(0, 255, 65, 0.5);
 }
 
-/* Spinning animation */
+/* ==================== ANIMATIONS ==================== */
+
 @keyframes spin-blur {
     0% { filter: blur(0); }
-    50% { filter: blur(3px); }
+    50% { filter: blur(2px); }
     100% { filter: blur(0); }
 }
 
@@ -664,37 +883,43 @@ body::before {
     animation: spin-blur 0.08s linear infinite;
 }
 
-/* Responsive adjustments */
+/* ==================== RESPONSIVE ==================== */
+
 @media (max-width: 500px) {
     .slot-machine {
-        padding: 25px 20px 20px;
-        border-radius: 20px;
+        padding: 25px 18px 20px;
+        border-radius: 16px;
     }
 
     .slot-machine::before {
-        border-radius: 25px;
+        top: -6px;
+        left: -6px;
+        right: -6px;
+        bottom: -6px;
+        border-radius: 20px;
     }
 
     .header h1 {
-        font-size: 1.8rem;
-        letter-spacing: 3px;
+        font-size: 1.7rem;
+        letter-spacing: 2px;
     }
 
     .reel {
-        width: 85px;
-        height: 105px;
+        width: 80px;
+        height: 100px;
+        border-width: 4px;
     }
 
     .symbol {
-        width: 85px;
-        height: 105px;
-        font-size: 3.5rem;
+        width: 80px;
+        height: 100px;
+        font-size: 3.2rem;
     }
 
     .hold-btn {
-        width: 75px;
-        height: 32px;
-        font-size: 0.75rem;
+        width: 70px;
+        height: 28px;
+        font-size: 0.65rem;
     }
 
     .paytable-grid {
@@ -703,16 +928,18 @@ body::before {
 
     .controls {
         flex-direction: column;
-        gap: 15px;
+        gap: 12px;
     }
 
     .spin-button {
-        width: 160px;
-        height: 60px;
+        width: 150px;
+        height: 55px;
+        font-size: 1.2rem;
     }
 }
 
-/* Win celebration overlay */
+/* ==================== CELEBRATION EFFECTS ==================== */
+
 .celebration {
     position: fixed;
     top: 0;
@@ -725,8 +952,8 @@ body::before {
 
 .confetti {
     position: absolute;
-    width: 12px;
-    height: 12px;
+    width: 10px;
+    height: 10px;
     opacity: 0;
 }
 
@@ -739,10 +966,4 @@ body::before {
         transform: translateY(100vh) rotate(1080deg) scale(0.5);
         opacity: 0;
     }
-}
-
-/* Extra Vegas flair - animated border lights */
-@keyframes border-chase {
-    0% { background-position: 0% 50%; }
-    100% { background-position: 200% 50%; }
 }
