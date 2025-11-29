@@ -100,7 +100,7 @@ body::before {
         inset 0 -3px 15px rgba(0, 0, 0, 0.4);
 }
 
-/* Chrome/brass outer frame - realistic metal */
+/* Chrome outer frame - realistic polished metal */
 .slot-machine::before {
     content: '';
     position: absolute;
@@ -108,39 +108,41 @@ body::before {
     left: -8px;
     right: -8px;
     bottom: -8px;
-    /* Realistic brushed brass/gold metal */
+    /* Realistic brushed chrome/silver metal */
     background:
         /* Brushed metal texture */
         repeating-linear-gradient(
             90deg,
             transparent 0px,
-            rgba(255, 255, 255, 0.03) 1px,
+            rgba(255, 255, 255, 0.05) 1px,
             transparent 2px
         ),
-        /* Metal gradient with realistic highlights */
+        /* Chrome gradient with realistic highlights */
         linear-gradient(180deg,
-            #d4b896 0%,
-            #c9a227 5%,
-            #a8860d 15%,
-            #d4af37 25%,
-            #b8942a 40%,
-            #8b7014 50%,
-            #b8942a 60%,
-            #d4af37 75%,
-            #a8860d 85%,
-            #c9a227 95%,
-            #d4b896 100%);
+            #f0f0f0 0%,
+            #e8e8e8 3%,
+            #c0c0c0 8%,
+            #f5f5f5 15%,
+            #d0d0d0 25%,
+            #a8a8a8 40%,
+            #707070 50%,
+            #a8a8a8 60%,
+            #d0d0d0 75%,
+            #f5f5f5 85%,
+            #c0c0c0 92%,
+            #e8e8e8 97%,
+            #f0f0f0 100%);
     border-radius: 25px;
     z-index: -1;
     box-shadow:
         /* Metal rim highlight */
-        inset 0 1px 0 rgba(255, 255, 255, 0.4),
-        inset 0 -1px 0 rgba(0, 0, 0, 0.3),
+        inset 0 2px 0 rgba(255, 255, 255, 0.9),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.4),
         /* Heavy base shadow */
         0 20px 50px rgba(0, 0, 0, 0.8),
         0 5px 20px rgba(0, 0, 0, 0.6),
-        /* Subtle gold reflection */
-        0 0 40px rgba(212, 175, 55, 0.15);
+        /* Subtle chrome reflection */
+        0 0 40px rgba(200, 200, 220, 0.2);
 }
 
 /* Inner chrome bezel - must be behind content */
@@ -154,7 +156,7 @@ body::before {
     border-radius: 16px;
     /* Chrome inner bezel - border only, no fill */
     border: 2px solid;
-    border-color: rgba(201, 160, 80, 0.4);
+    border-color: rgba(200, 200, 210, 0.5);
     background: transparent;
     pointer-events: none;
     z-index: 0;
