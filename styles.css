@@ -175,6 +175,7 @@ body::before {
     align-items: center;
     gap: 15px;
     flex-wrap: nowrap;
+    flex-wrap: wrap;
 }
 
 .header h1 {
@@ -952,6 +953,8 @@ body::before {
     .header-displays {
         justify-content: space-between;
         gap: 8px;
+        justify-content: center;
+        gap: 10px;
     }
 
     .bet-controls {
