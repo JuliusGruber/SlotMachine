@@ -169,6 +169,14 @@ body::before {
     z-index: 1;
 }
 
+.header-displays {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
 .header h1 {
     font-family: 'Playfair Display', serif;
     color: #ffe566;
@@ -586,11 +594,11 @@ body::before {
 
 /* Bet +/- buttons - chrome arcade buttons */
 .bet-btn {
-    width: 42px;
-    height: 42px;
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
     /* Chrome dome button */
-    border: 3px solid;
+    border: 2px solid;
     border-color: #999 #777 #666 #888;
     background:
         radial-gradient(ellipse at 50% 25%,
@@ -600,16 +608,16 @@ body::before {
             #888 80%,
             #666 100%);
     color: #333;
-    font-size: 1.6rem;
+    font-size: 1.2rem;
     font-weight: bold;
     cursor: pointer;
     transition: all 0.15s;
     box-shadow:
         /* 3D dome effect */
-        inset 0 -5px 15px rgba(0, 0, 0, 0.4),
-        inset 0 5px 10px rgba(255, 255, 255, 0.8),
-        0 4px 10px rgba(0, 0, 0, 0.5),
-        0 1px 3px rgba(0, 0, 0, 0.3);
+        inset 0 -4px 10px rgba(0, 0, 0, 0.4),
+        inset 0 4px 8px rgba(255, 255, 255, 0.8),
+        0 3px 8px rgba(0, 0, 0, 0.5),
+        0 1px 2px rgba(0, 0, 0, 0.3);
     text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
     /* Prevent touch-related viewport shifts */
     touch-action: manipulation;
@@ -643,9 +651,9 @@ body::before {
 .bet-display {
     background:
         linear-gradient(180deg, #1a1a1a 0%, #0d0d0d 50%, #1a1a1a 100%);
-    padding: 8px 20px;
+    padding: 6px 12px;
     border-radius: 6px;
-    border: 3px solid;
+    border: 2px solid;
     border-color: #888 #666 #555 #777;
     box-shadow:
         inset 0 2px 8px rgba(0, 0, 0, 0.9),
@@ -671,11 +679,11 @@ body::before {
 /* ==================== SPIN BUTTON - BIG RED ARCADE BUTTON ==================== */
 
 .spin-button {
-    width: 130px;
-    height: 65px;
-    border-radius: 35px;
+    width: 200px;
+    height: 90px;
+    border-radius: 45px;
     /* Heavy chrome bezel */
-    border: 5px solid;
+    border: 6px solid;
     border-color: #aaa #888 #777 #999;
     /* Big red dome button */
     background:
@@ -686,23 +694,23 @@ body::before {
             #aa1111 80%,
             #881010 100%);
     color: #ffeecc;
-    font-size: 1.4rem;
+    font-size: 1.8rem;
     font-weight: bold;
     cursor: pointer;
     transition: all 0.15s;
     box-shadow:
         /* 3D dome effect */
-        inset 0 -10px 25px rgba(0, 0, 0, 0.5),
-        inset 0 8px 15px rgba(255, 200, 200, 0.4),
+        inset 0 -12px 30px rgba(0, 0, 0, 0.5),
+        inset 0 10px 20px rgba(255, 200, 200, 0.4),
         /* Base shadow */
-        0 8px 25px rgba(0, 0, 0, 0.6),
-        0 3px 8px rgba(0, 0, 0, 0.4),
+        0 10px 30px rgba(0, 0, 0, 0.6),
+        0 4px 10px rgba(0, 0, 0, 0.4),
         /* Red glow */
-        0 0 20px rgba(255, 50, 50, 0.3);
+        0 0 30px rgba(255, 50, 50, 0.4);
     text-shadow:
         0 1px 0 rgba(255, 255, 255, 0.2),
         0 -1px 2px rgba(0, 0, 0, 0.5);
-    letter-spacing: 2px;
+    letter-spacing: 3px;
     text-transform: uppercase;
     position: relative;
     overflow: hidden;
@@ -742,11 +750,11 @@ body::before {
             #991515 100%);
     transform: translateY(-3px);
     box-shadow:
-        inset 0 -10px 25px rgba(0, 0, 0, 0.5),
-        inset 0 8px 15px rgba(255, 200, 200, 0.5),
-        0 12px 35px rgba(0, 0, 0, 0.6),
-        0 5px 12px rgba(0, 0, 0, 0.4),
-        0 0 35px rgba(255, 50, 50, 0.5);
+        inset 0 -12px 30px rgba(0, 0, 0, 0.5),
+        inset 0 10px 20px rgba(255, 200, 200, 0.5),
+        0 14px 40px rgba(0, 0, 0, 0.6),
+        0 6px 15px rgba(0, 0, 0, 0.4),
+        0 0 45px rgba(255, 50, 50, 0.6);
 }
 
 .spin-button:active:not(:disabled) {
@@ -941,6 +949,25 @@ body::before {
         letter-spacing: 2px;
     }
 
+    .header-displays {
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .bet-controls {
+        gap: 6px;
+    }
+
+    .bet-btn {
+        width: 28px;
+        height: 28px;
+        font-size: 1rem;
+    }
+
+    .bet-display {
+        padding: 4px 8px;
+    }
+
     .reel {
         width: 80px;
         height: 100px;
@@ -969,9 +996,10 @@ body::before {
     }
 
     .spin-button {
-        width: 150px;
-        height: 55px;
-        font-size: 1.2rem;
+        width: 180px;
+        height: 75px;
+        font-size: 1.5rem;
+        border-radius: 38px;
     }
 }
 
