@@ -11,14 +11,24 @@ html {
     min-height: -webkit-fill-available;
 }
 
+/* Fixed background that doesn't move on touch */
+html::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('https://images.unsplash.com/photo-1517232115160-ff93364542dd?w=1920&q=80') center center / cover no-repeat;
+    z-index: -2;
+}
+
 body {
     position: relative;
     min-height: 100%;
     min-height: -webkit-fill-available;
     display: block;
-    background:
-        linear-gradient(180deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0.7) 100%),
-        url('https://images.unsplash.com/photo-1517232115160-ff93364542dd?w=1920&q=80') center center / cover no-repeat scroll;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0.7) 100%);
     overflow-x: hidden;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     padding: 20px 20px 40px 20px;
