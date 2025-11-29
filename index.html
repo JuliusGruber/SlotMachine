@@ -10,9 +10,19 @@
     <div class="slot-machine">
         <div class="header">
             <h1>LUCKY SLOTS</h1>
-            <div class="credits-display">
-                <span>CREDITS:</span>
-                <span id="credits">100</span>
+            <div class="header-displays">
+                <div class="credits-display">
+                    <span>CREDITS:</span>
+                    <span id="credits">100</span>
+                </div>
+                <div class="bet-controls">
+                    <button id="bet-down" class="bet-btn">-</button>
+                    <div class="bet-display">
+                        <span>BET:</span>
+                        <span id="bet-amount">10</span>
+                    </div>
+                    <button id="bet-up" class="bet-btn">+</button>
+                </div>
             </div>
         </div>
 
@@ -48,15 +58,6 @@
         </div>
 
         <div class="controls">
-            <div class="bet-controls">
-                <button id="bet-down" class="bet-btn">-</button>
-                <div class="bet-display">
-                    <span>BET:</span>
-                    <span id="bet-amount">10</span>
-                </div>
-                <button id="bet-up" class="bet-btn">+</button>
-            </div>
-
             <button id="spin-btn" class="spin-button">
                 <span>SPIN</span>
             </button>
